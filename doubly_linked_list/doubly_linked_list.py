@@ -48,25 +48,39 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
+        new_node = ListNode(value) #do not need prev, next bc default none
         #check if the DLL is empty
-            #create a new node
+        if not self.head and not self.tail:    
             #self.head is new node
+            self.head = new_node
             #self.tail is new node
-
-        #all other cases what to do?
-        #else:
+            self.tail = new_node
+         #all other cases what  do?
+        else:
         #newnodenext = self.head
+            new_node.next = self.head
         #selfprev = new node
+            self.head.prev = new_node
         #selfhead = new node
+            self.head = new_node
         #self len += 1
-        pass
-
+        self.length +=1
+        return self
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        pass
+        '''Cases: list empty then return none
+            list one then set both to none
+            list more than one'''
+        if not self.head and not self.tail:
+            return
+        elif self.head == self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            #
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
