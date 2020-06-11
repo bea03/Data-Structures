@@ -17,12 +17,35 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
-
+        if value < self.value:
+            if self. left is None: #base case for recursion to stop
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        elif value >= self.value:
+            if self.right is None: #base case for recursion to stop
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
+#implicit return here, when return from function what happens to 
+#call stack?
+#pop last item in stack and go back one then another implcit return
+#then, done because three is inserted. 
+'''
+the nodes exist outside of the pointer. it is its own thing in memory that
+has things point to it. if nothing points to it, then
+it is essentially deleted from the tree. It is not like bst = [1,2,3]
+'''
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        if target >= self.value:
+            if self.right is None:
+                return False
+            else:
+                return self.left.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
